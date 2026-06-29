@@ -1,4 +1,5 @@
 import { api } from './api'
+import { getApiBaseUrl } from './config'
 import type { RazorpaySuccessResponse } from './razorpay'
 
 export type CreateOrderResponse = {
@@ -164,7 +165,7 @@ export function createBillingOrder(planId: string) {
 }
 
 export async function verifyBillingPayment(payload: RazorpaySuccessResponse) {
-  const baseUrl = import.meta.env.VITE_API_URL
+  const baseUrl = getApiBaseUrl()
   const token = localStorage.getItem('token')
 
   const res = await fetch(`${baseUrl}/api/billing/verify-payment`, {

@@ -1,4 +1,6 @@
-const BASE_URL = import.meta.env.VITE_API_URL
+import { getApiBaseUrl } from './config'
+
+const BASE_URL = getApiBaseUrl()
 
 export async function speak(text: string, languageCode: string | null = null) {
   const token = localStorage.getItem('token')

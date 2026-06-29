@@ -1,4 +1,6 @@
-const BASE_URL = import.meta.env.VITE_API_URL
+import { getApiBaseUrl } from './config'
+
+const BASE_URL = getApiBaseUrl()
 
 export class ApiError extends Error {
   status: number

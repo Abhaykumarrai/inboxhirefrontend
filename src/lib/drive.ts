@@ -1,4 +1,5 @@
 import { api } from './api'
+import { getOAuthBaseUrl } from './config'
 
 export type DriveConnectionApi = {
   id?: string
@@ -46,7 +47,7 @@ export function disconnectDriveConnection() {
 
 export function buildDriveConnectUrl() {
   const token = localStorage.getItem('token')
-  const baseUrl = import.meta.env.VITE_API_URL
+  const baseUrl = getOAuthBaseUrl()
   return `${baseUrl}/api/drive/connect?token=${encodeURIComponent(token || '')}`
 }
 

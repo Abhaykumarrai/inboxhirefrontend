@@ -1,4 +1,5 @@
 import { api } from './api'
+import { getOAuthBaseUrl } from './config'
 
 export type GmailConnectionApi = {
   id: string
@@ -45,7 +46,7 @@ export function disconnectGmailConnection(connectionId: string) {
 
 export function buildGmailConnectUrl() {
   const token = localStorage.getItem('token')
-  const baseUrl = import.meta.env.VITE_API_URL
+  const baseUrl = getOAuthBaseUrl()
   return `${baseUrl}/api/auth/gmail/connect?token=${encodeURIComponent(token || '')}`
 }
 
